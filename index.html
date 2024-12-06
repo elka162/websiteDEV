@@ -8,11 +8,12 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text by default */
         }
         .section {
             padding: 20px;
             text-align: center;
-            color: white;
         }
         /* Division 1 */
         .background {
@@ -23,6 +24,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: white;
         }
         .background::after {
             content: '';
@@ -40,24 +42,29 @@
             font-family: "Times New Roman", Times, serif;
             z-index: 2;
             position: relative;
+            color: #d4d700; /* Light olive green */
         }
         .background p {
             font-size: 1.5em;
             z-index: 2;
             position: relative;
+            color: #f0f0f0; /* Light gray */
         }
         /* Division 2 */
         .about {
-            background-color: #333;
+            background-color: #2f4f2f; /* Dark olive green */
             color: white;
             display: flex;
             padding: 20px;
             align-items: center;
+            border-top: 2px solid #d4d700; /* Light olive green border */
+            border-bottom: 2px solid #d4d700;
         }
         .about img {
             max-width: 300px;
             border-radius: 15px; /* Rounded edges */
             margin-right: 20px;
+            border: 3px solid #fff; /* White border */
         }
         .about div {
             text-align: left;
@@ -69,43 +76,55 @@
         }
         /* Division 3 */
         .achievements {
-            background-color: #222;
+            background-color: #222; /* Black with a slight tone */
             padding: 20px;
+            border-top: 2px solid #d4d700;
         }
         .achievements h2 {
-            color: white;
+            color: #d4d700; /* Light olive green */
             margin-bottom: 10px;
+        }
+        .achievement-slider h3 {
+            color: #f0f0f0; /* Light gray */
+            margin: 10px 0;
         }
         .slider-container {
             position: relative;
             max-width: 80%;
             margin: 0 auto;
             overflow: hidden;
+            border: 2px solid #d4d700; /* Light olive green border */
+            border-radius: 10px;
         }
         .slider {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
         .slider img {
-            border-radius: 10px; /* Rounded edges */
-            width: 100%;
+            width: 50%; /* Reduced size */
             height: auto;
+            border-radius: 10px;
+            border: 2px solid #fff; /* White border */
         }
         .slider-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            background-color: rgba(212, 215, 0, 0.8); /* Light olive green with transparency */
+            color: #000; /* Black text */
             border: none;
             padding: 10px;
             cursor: pointer;
+            border-radius: 5px;
         }
         .prev {
             left: 10px;
         }
         .next {
             right: 10px;
+        }
+        .slider-button:hover {
+            background-color: #d4d700; /* Solid light olive green */
         }
     </style>
 </head>
@@ -128,39 +147,71 @@
     <!-- Division 3 -->
     <div class="section achievements">
         <h2>Our Achievements</h2>
-        <div class="slider-container">
-            <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
-            <div class="slider" id="slider">
-                <img src="VIN_4928.JPG" alt="2023 Champion">
-                <img src="VIN_4976.JPG" alt="2023 Champion">
-                <img src="VIN_5004.JPG" alt="2023 Champion">
-                <img src="VIN_4281.JPG" alt="2024 Champion">
-                <img src="VIN_4324.JPG" alt="2024 Champion">
-                <img src="VIN_3905.JPG" alt="March Past 2024">
-                <img src="VIN_4147.JPG" alt="March Past 2024">
+
+        <!-- Section 1 -->
+        <div class="achievement-slider">
+            <h3>Champions of 2023 Intra Parish Sports Meet</h3>
+            <div class="slider-container">
+                <button class="slider-button prev" onclick="prevSlide('slider2023')">&#10094;</button>
+                <div class="slider" id="slider2023">
+                    <img src="VIN_4928.JPG" alt="2023 Champion">
+                    <img src="VIN_4976.JPG" alt="2023 Champion">
+                    <img src="VIN_5004.JPG" alt="2023 Champion">
+                </div>
+                <button class="slider-button next" onclick="nextSlide('slider2023')">&#10095;</button>
             </div>
-            <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="achievement-slider">
+            <h3>Champions of 2024 Intra Parish Sports Meet</h3>
+            <div class="slider-container">
+                <button class="slider-button prev" onclick="prevSlide('slider2024')">&#10094;</button>
+                <div class="slider" id="slider2024">
+                    <img src="VIN_4281.JPG" alt="2024 Champion">
+                    <img src="VIN_4324.JPG" alt="2024 Champion">
+                </div>
+                <button class="slider-button next" onclick="nextSlide('slider2024')">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="achievement-slider">
+            <h3>Champions of 2024 March Past Competition</h3>
+            <div class="slider-container">
+                <button class="slider-button prev" onclick="prevSlide('sliderMarchPast')">&#10094;</button>
+                <div class="slider" id="sliderMarchPast">
+                    <img src="VIN_3905.JPG" alt="March Past 2024">
+                    <img src="VIN_4147.JPG" alt="March Past 2024">
+                </div>
+                <button class="slider-button next" onclick="nextSlide('sliderMarchPast')">&#10095;</button>
+            </div>
         </div>
     </div>
 
     <script>
-        let slider = document.getElementById('slider');
-        let scrollAmount = 0;
-
-        function nextSlide() {
-            scrollAmount += slider.offsetWidth;
+        function nextSlide(sliderId) {
+            let slider = document.getElementById(sliderId);
+            let scrollAmount = slider.scrollLeft + slider.offsetWidth;
             if (scrollAmount >= slider.scrollWidth) {
                 scrollAmount = 0;
             }
-            slider.style.transform = `translateX(-${scrollAmount}px)`;
+            slider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
         }
 
-        function prevSlide() {
-            scrollAmount -= slider.offsetWidth;
+        function prevSlide(sliderId) {
+            let slider = document.getElementById(sliderId);
+            let scrollAmount = slider.scrollLeft - slider.offsetWidth;
             if (scrollAmount < 0) {
                 scrollAmount = slider.scrollWidth - slider.offsetWidth;
             }
-            slider.style.transform = `translateX(-${scrollAmount}px)`;
+            slider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
