@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image: url('gradient_banner.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+.header {
+    background-image: url('9a4b05c59f754bdeae2edc61212d990b.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    color: white;
+}
+
+.header .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 50px 0;
+}
+
+.header .intro {
+    max-width: 600px;
+    margin: auto;
+}
+
+.header .profile-image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 20px;
+    border: 5px solid white;
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    display: inline-block;
+    margin: 5px 10px;
+    background: #222;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+.footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
