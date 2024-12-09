@@ -16,24 +16,16 @@
             color: white;
         }
 
+        /* Header Section */
         .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background-image: url('9a4b05c59f754bdeae2edc61212d990b.jpg');
             background-size: cover;
             background-position: center;
-            text-align: center;
             padding: 100px 20px;
-            position: relative;
             color: white;
-        }
-
-        .header .overlay {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 50px 0;
-        }
-
-        .header .intro {
-            max-width: 600px;
-            margin: auto;
         }
 
         .header .profile-image img {
@@ -41,12 +33,50 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
-            margin: 20px;
+            margin-right: 30px;
             border: 5px solid white;
         }
 
+        .header .intro {
+            max-width: 600px;
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Tabs */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: #222;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 20px;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #007bff;
+        }
+
+        /* Section Styling */
         .section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
             background: rgba(0, 0, 0, 0.8);
             margin-bottom: 20px;
@@ -86,6 +116,48 @@
             background: #0056b3;
         }
 
+        /* Projects Section with Slider */
+        .projects {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-slide {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-slide .project {
+            min-width: 300px;
+            margin: 0 10px;
+            background: #444;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .project-slide .project h3 {
+            margin-top: 0;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Footer */
         .footer {
             background: #222;
             color: white;
@@ -95,20 +167,29 @@
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#volunteering">Volunteering</a>
+        <a href="#interests">Interests</a>
+    </div>
+
+    <!-- Header Section -->
     <header class="header">
-        <div class="overlay">
-            <div class="container">
-                <div class="intro">
-                    <h1>Elkan Pais</h1>
-                    <p>Aspiring IT Professional | MCA Student | Passionate about Technology</p>
-                </div>
-                <div class="profile-image">
-                    <img src="Elkan_1.jpeg" alt="Elkan Pais">
-                </div>
-            </div>
+        <div class="profile-image">
+            <img src="Elkan_1.jpeg" alt="Elkan Pais">
+        </div>
+        <div class="intro">
+            <h1>Elkan Pais</h1>
+            <p>Aspiring IT Professional | MCA Student | Passionate about Technology</p>
         </div>
     </header>
 
+    <!-- About Me Section -->
     <section id="about" class="section">
         <div class="container">
             <h2>About Me</h2>
@@ -119,6 +200,7 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="container">
             <h2>Skills</h2>
@@ -132,17 +214,32 @@
         </div>
     </section>
 
+    <!-- Projects Section with Slider -->
     <section id="projects" class="section">
         <div class="container">
             <h2>Projects</h2>
-            <ul>
-                <li><strong>Epilepsy Seizure Detection System:</strong> AI/ML-based detection system for healthcare.</li>
-                <li><strong>Farm-G:</strong> Predictive and assistance system for agriculture.</li>
-                <li><strong>AI and the World Tomorrow:</strong> Research paper exploring AI's future impact.</li>
-            </ul>
+            <div class="projects">
+                <div class="project-slide" id="project-slide">
+                    <div class="project">
+                        <h3>Epilepsy Seizure Detection System</h3>
+                        <p>AI/ML-based detection system for healthcare.</p>
+                    </div>
+                    <div class="project">
+                        <h3>Farm-G</h3>
+                        <p>Predictive and assistance system for agriculture.</p>
+                    </div>
+                    <div class="project">
+                        <h3>AI and the World Tomorrow</h3>
+                        <p>Research paper exploring AI's future impact.</p>
+                    </div>
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
         </div>
     </section>
 
+    <!-- Achievements Section -->
     <section id="achievements" class="section">
         <div class="container">
             <h2>Achievements</h2>
@@ -150,6 +247,7 @@
         </div>
     </section>
 
+    <!-- Volunteering Section -->
     <section id="volunteering" class="section">
         <div class="container">
             <h2>Volunteering</h2>
@@ -157,6 +255,7 @@
         </div>
     </section>
 
+    <!-- Interests Section -->
     <section id="interests" class="section">
         <div class="container">
             <h2>Interests</h2>
@@ -164,10 +263,23 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Connect with me on <a href="https://linkedin.com">LinkedIn</a> | Email: elkabrian162@gmail.com</p>
+            <p>Connect with me on <a href="https://linkedin.com" target="_blank">LinkedIn</a> | Email: elkabrian162@gmail.com</p>
         </div>
     </footer>
+
+    <script>
+        let slideIndex = 0;
+        function moveSlide(n) {
+            slideIndex += n;
+            const slides = document.getElementById('project-slide');
+            const totalSlides = slides.children.length;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            slides.style.transform = 'translateX(' + (-slideIndex * 320) + 'px)';
+        }
+    </script>
 </body>
 </html>
